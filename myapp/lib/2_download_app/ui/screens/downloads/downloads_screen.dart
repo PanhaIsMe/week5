@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/2_download_app/ui/screens/downloads/widgets/download_tile.dart';
 import 'package:myapp/2_download_app/ui/screens/settings/settings_screen.dart';
-import '../../providers/theme_color_provider.dart';
+// import '../../providers/theme_color_provider.dart';
 import '../../theme/theme.dart';
 import 'widgets/download_controler.dart';
 

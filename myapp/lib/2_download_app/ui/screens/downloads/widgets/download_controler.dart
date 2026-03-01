@@ -15,7 +15,7 @@ class DownloadController extends ChangeNotifier {
   // DATA
   Ressource ressource;
   DownloadStatus _status = DownloadStatus.notDownloaded;
-  ValueNotifier<double> _progress = ValueNotifier(0.0); // 0.0 → 1.0
+  final ValueNotifier<double> _progress = ValueNotifier(0.0); // 0.0 → 1.0
 
   // GETTERS
   DownloadStatus get status => _status;
@@ -24,7 +24,9 @@ class DownloadController extends ChangeNotifier {
   // ACTIONS
   void startDownload() async {
     if (_status == DownloadStatus.downloading ||
-        _status == DownloadStatus.downloaded) return;
+        _status == DownloadStatus.downloaded) {
+      return;
+    }
     _status = DownloadStatus.downloading;
     progress.value = 0.0;
     notifyListeners();
