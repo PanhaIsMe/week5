@@ -11,9 +11,9 @@ class DownloadTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<double>(
-      valueListenable: controller.progress,
-      builder: (context, value, child) {
+    return ListenableBuilder(
+      listenable: controller,
+      builder: (context, child)  {
         Icon trailingIcon;
         switch (controller.status) {
           case DownloadStatus.notDownloaded:
@@ -31,7 +31,7 @@ class DownloadTile extends StatelessWidget {
           title: Text(controller.ressource.name),
           trailing: trailingIcon,
           subtitle: Text(
-            "${controller.ressource.size} KB of complete ${controller.progress.value*100}%",
+            "${controller.ressource.size} KB of complete ${controller.progress*100}%",
           ),
           onTap: () => controller.startDownload(),
         );

@@ -15,11 +15,11 @@ class DownloadController extends ChangeNotifier {
   // DATA
   Ressource ressource;
   DownloadStatus _status = DownloadStatus.notDownloaded;
-  final ValueNotifier<double> _progress = ValueNotifier(0.0); // 0.0 → 1.0
+   double _progress = 0.0; // 0.0 → 1.0
 
   // GETTERS
   DownloadStatus get status => _status;
-  ValueNotifier<double> get progress => _progress;
+  double get progress => _progress;
 
   // ACTIONS
   void startDownload() async {
@@ -28,16 +28,16 @@ class DownloadController extends ChangeNotifier {
       return;
     }
     _status = DownloadStatus.downloading;
-    progress.value = 0.0;
+    _progress = 0.0;
     notifyListeners();
     for (var i = 0; i < 10; i++) {
       // _progress.value += 0.1;
-        progress.value = i / 10;
+        _progress = i / 10;
       await Future.delayed(const Duration(milliseconds: 1000));
        notifyListeners();
     }
     _status= DownloadStatus.downloaded;
-    progress.value = 1.0; 
+    _progress = 1.0; 
      notifyListeners();
     // TODO
     // 1 – set status to downloading

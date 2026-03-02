@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/w6/ui/states/settings_state.dart';
-import 'package:provider/provider.dart';
+// import 'package:myapp/w6/ui/states/settings_state.dart';
+// import 'package:provider/provider.dart';
 
 import '../../providers/theme_color_provider.dart';
 import '../../theme/theme.dart';
@@ -61,26 +61,21 @@ class SettingsScreen extends StatelessWidget {
         
               SizedBox(height: 10),
         
-              Consumer<AppSettingsState>(
-                builder: (context, value, child) {
-                  return  Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: ThemeColor.values
-                      .map(
-                        (theme) => ThemeColorButton(
-                          themeColor: theme,
-                          
-                          isSelected: theme == myColorNotifier.color,
-                          onTap: (value) {
-                            onChangeCard(theme);
-                          },
-                        ),
-                      )
-                      .toList(),
-                );
-                },
-                
-              ),
+              Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: ThemeColor.values
+                  .map(
+                    (theme) => ThemeColorButton(
+                      themeColor: theme,
+                      
+                      isSelected: theme == myColorNotifier.color,
+                      onTap: (value) {
+                        onChangeCard(theme);
+                      },
+                    ),
+                  )
+                  .toList(),
+                              ),
             ],
           ),
         );
